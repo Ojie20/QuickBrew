@@ -1,20 +1,26 @@
-import { useState } from 'react'
-
-import './App.css'
+import React, { useState, useEffect } from "react";
+import api from "./api";
+import CocktailList from "./components/cocktailList";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cocktails, setCocktails] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/cocktails") 
+      .then((response) => response.json())
+      .then((data) => setCocktails(data))
+      .catch((error) => console.error("Error fetching products:", error));
+
+      console.log(cocktails);
+      
+  }, []);
 
   return (
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-  )
+    <div style={{ padding: "20px" }}>
+      <h1>Cocktail Recipes 🍸</h1>
+      <CocktailList cocktails={cocktails} />
+    </div>
+  );
 }
 
-export default App
+export default App;

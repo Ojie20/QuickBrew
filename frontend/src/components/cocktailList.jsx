@@ -1,0 +1,16 @@
+import React from "react";
+import CocktailCard from "./cocktailCard";
+
+function CocktailList({ cocktails }) {
+  return (
+    <div>
+      {cocktails.length > 0 ? (
+        cocktails.map((c) => <CocktailCard key={c._id} cocktail={c} />)
+      ) : (
+        <p>No cocktails found.</p>
+      )}
+    </div>
+  );
+}
+
+export default CocktailList;
