@@ -9,16 +9,20 @@ function CocktailCard({ cocktail }) {
       <p><b>Garnish:</b> {cocktail.garnish}</p>
       <h4>Ingredients:</h4>
       <table>
+        <thead>
         <tr>
           <th>Item</th>
           <th>Amount</th>
         </tr>
+        </thead>
+        <tbody>
         {cocktail.ingredients.map((ing, idx) => (
           <tr key={idx}>
             <td>{ing.item}</td>
             <td>{ing.amount}</td>
           </tr>
         ))}
+        </tbody>
       </table>
       <h4>Procedure:</h4>
       <ol>
