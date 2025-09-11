@@ -1,35 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function CocktailCard({ cocktail }) {
   return (
-    <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}>
-      <h2>{cocktail.name}</h2>
-      <img src={cocktail.imageUrl} alt={cocktail.name} width="200" />
+    <div className="card">
+      <img src={cocktail.imageUrl} alt={cocktail.name} />
+      <h3>{cocktail.name}</h3>
       <p><b>Taste:</b> {cocktail.taste.join(' ')}</p>
-      <p><b>Garnish:</b> {cocktail.garnish}</p>
-      <h4>Ingredients:</h4>
-      <table>
-        <thead>
-        <tr>
-          <th>Item</th>
-          <th>Amount</th>
-        </tr>
-        </thead>
-        <tbody>
-        {cocktail.ingredients.map((ing, idx) => (
-          <tr key={idx}>
-            <td>{ing.item}</td>
-            <td>{ing.amount}</td>
-          </tr>
-        ))}
-        </tbody>
-      </table>
-      <h4>Procedure:</h4>
-      <ol>
-        {cocktail.procedure.map((step, idx) => (
-          <li key={idx}>{step}</li>
-        ))}
-      </ol>
+      {/* Link to full details page */}
+      <Link to={`/cocktail/${cocktail._id}`}>View Details</Link>
     </div>
   );
 }
