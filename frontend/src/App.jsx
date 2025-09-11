@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import api from "./api";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import SearchBar from "./components/searchbar";
 import CocktailList from "./components/cocktailList";
 import CocktailDetails from "./pages/cocktailDetails";
@@ -42,8 +44,9 @@ function App() {
         <Route path="/cocktail/:id" element={<CocktailDetails />} />
         <Route path="/" element={
           <div style={{ padding: "20px" }}>
-          <h1>Cocktail Recipes 🍸</h1>
+          
           <SearchBar onSearch={fetchCocktails} />
+          <h1>Cocktail Recipes 🍸</h1>
           <CocktailList cocktails={cocktails} />
         </div>
         } />

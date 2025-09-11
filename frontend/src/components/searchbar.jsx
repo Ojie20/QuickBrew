@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function SearchBar({ onSearch }) {
   const [ingredient, setIngredient] = useState("");
@@ -9,15 +10,23 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-      <input
-        type="text"
-        placeholder="Search by ingredient..."
-        value={ingredient}
-        onChange={(e) => setIngredient(e.target.value)}
-      />
-      <button type="submit">Search</button>
-    </form>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
+        <a className="navbar-brand" href="/">
+            <img src="public/QuickBrewLogo.svg" alt="Logo" width="30" height="30" className="d-inline-block align-top" />
+            QuickBrew
+        </a>
+
+        <form className="d-flex ms-auto" onSubmit={handleSubmit} >
+        <input
+            type="text"
+            className="form-control me-2"
+            placeholder="Search by ingredient..."
+            value={ingredient}
+            onChange={(e) => setIngredient(e.target.value)}
+        />
+        <button className="btn btn-primary" type="submit">Search</button>
+        </form>
+    </nav>
   );
 }
 
