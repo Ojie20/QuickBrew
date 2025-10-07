@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 function CocktailCard({ cocktail }) {
   return (
-    <div className="col-md-4 mb-4">
-      <div className="card shadow-sm">
+    <div className="col-md-4 mb-4 text-center">
+      <div className="card shadow-sm" style={{backgroundColor: '#ff2'}}>
         <img
           src={cocktail.imageUrl}
           className="card-img-top img-fluid"
           alt={cocktail.name}
-          style={{ height: "200px", objectFit: "cover" }}
+          style={{ height: "300px", objectFit: "cover" }}
         />
         <div className="card-body">
           <h5 className="card-title">{cocktail.name}</h5>
@@ -19,7 +19,7 @@ function CocktailCard({ cocktail }) {
           <p className="card-text">
             <b>Ingredients:</b> {cocktail.ingredients.map((ingredient) => ingredient.item).join(", ")}
           </p>
-          <Link to={`/cocktail/${cocktail._id}`} className="btn btn-primary">
+          <Link to={`/cocktail/${cocktail._id}`} className="btn  text-dark">
             View Details
           </Link>
         </div>

@@ -10,7 +10,7 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light px-3 mb-3 z-3" style={{ position: "sticky", top: 0, zIndex: 1050 }}>
         <a className="navbar-brand" href="/">
             <img src="public/QuickBrewLogo.svg" alt="Logo" width="30" height="30" className="d-inline-block align-top" />
             QuickBrew
@@ -24,7 +24,7 @@ function SearchBar({ onSearch }) {
             value={ingredient}
             onChange={(e) => setIngredient(e.target.value)}
         />
-        <button className="btn btn-primary" type="submit">Search</button>
+        <button className="btn btn-primary text-dark" type="submit">Search</button>
         </form>
     </nav>
   );
