@@ -14,11 +14,15 @@ body, .btn{
         ;
   background-repeat: no-repeat;
 }
+.container {
+  margin: 0;
+  width: 100vw;
+}
 
 h1, h2, h3, h4, h5, h6, .navbar-brand {
   font-family: 'Pacifico', cursive;
 }
-.card, .navbar {
+.card, .navbar, .table {
   background: fixed;
   background-color: #ffffff;
   

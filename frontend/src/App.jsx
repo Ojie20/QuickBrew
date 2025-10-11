@@ -58,7 +58,6 @@ function App() {
             element={
               <div className="container mt-4">
                 <SearchBar onSearch={fetchCocktails} />
-                <h1 className="text-center my-4">Cocktail Recipes 🍸</h1>
                 <LandingCard />
                 <CocktailList cocktails={cocktails} />
               </div>

@@ -44,7 +44,7 @@ function CocktailDetails() {
                 <b>Taste:</b> {cocktail.taste.join(", ")}
               </p>
               <h4>Ingredients:</h4>
-              <table className="table table-striped">
+              <table className="table">
                 <thead>
                   <tr>
                     <th>Item</th>
