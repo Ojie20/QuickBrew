@@ -22,6 +22,7 @@ function CocktailCard({ cocktail }) {
           <Link to={`/cocktail/${cocktail._id}`} className="btn  text-dark">
             View Details
           </Link>
+          <button className="btn  text-dark ms-2">Bookmark</button>
         </div>
       </div>
     </div>

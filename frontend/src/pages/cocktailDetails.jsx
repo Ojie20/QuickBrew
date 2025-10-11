@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import api from "../api";
 import { useParams } from "react-router-dom";
 
 function CocktailDetails() {
@@ -9,7 +10,7 @@ function CocktailDetails() {
   useEffect(() => {
     async function fetchCocktailById() {
       try {
-        const response = await fetch(`http://localhost:5000/cocktail/${id}`);
+        const response = await api.get(`/cocktail/${id}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
         setCocktail(data);

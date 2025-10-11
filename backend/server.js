@@ -57,11 +57,9 @@ connectDB().then(() => {
     }
 
     app.get('/cocktails', async (req, res) => {
-        try {
-            console.log("Fetching all cocktails");
-            
+        try {            
             const allCocktails = await cocktailsCollection.find({}).toArray();
-            console.log(`Found ${allCocktails.length} cocktails`);
+            
             
             res.json(allCocktails);
         } catch (err) {

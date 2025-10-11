@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import api from "./api";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import Login from "./pages/Login";
 import LandingCard from "./components/landingCard";
 import SearchBar from "./components/searchbar";
 import CocktailList from "./components/cocktailList";
 import CocktailDetails from "./pages/cocktailDetails";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cocktails, setCocktails] = useState([]);
   const [searched, setSearched]= useState(false);
 
@@ -35,13 +37,18 @@ function App() {
     return (
       <Router>
         <Routes>
+          <Route path="/login" element={<Login onLogin={()=>setIsLoggedIn(true)}/>} />
           <Route
             path="/"
             element={
-              <div className="container mt-4">
+              isLoggedIn ? (
+                <div className="">
                 <SearchBar onSearch={fetchCocktails} />
                 <CocktailList cocktails={cocktails} />
               </div>
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
           <Route path="/cocktail/:id" element={<CocktailDetails />} />
@@ -53,14 +60,19 @@ function App() {
     return (
       <Router>
         <Routes>
+          <Route path="/login" element={<Login onLogin={()=>setIsLoggedIn(true)}/>} />
           <Route
             path="/"
             element={
-              <div className="container mt-4">
+              isLoggedIn ? (
+                <div className="">
                 <SearchBar onSearch={fetchCocktails} />
                 <LandingCard />
                 <CocktailList cocktails={cocktails} />
               </div>
+              ) : (
+                <Navigate to="/login" />
+              )
             }
           />
           <Route path="/cocktail/:id" element={<CocktailDetails />} />
