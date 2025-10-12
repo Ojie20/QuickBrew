@@ -1,7 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import api from "../api";
+
+
 
 function CocktailCard({ cocktail }) {
+  const handleBookmark = async () => {
+    try {
+      await api.post('bookmark', { cocktailId: cocktail._id},
+        {headers: { Authorization: localStorage.getItem("token") }}
+       );
+      alert("Cocktail bookmarked!");
+    } catch (error) {
+      console.error("Error bookmarking cocktail:", error);
+    }
+  }
   return (
     <div className="col-md-4 mb-4 text-center">
       <div className="card shadow-sm" style={{backgroundColor: '#ff2'}}>
@@ -22,11 +35,12 @@ function CocktailCard({ cocktail }) {
           <Link to={`/cocktail/${cocktail._id}`} className="btn  text-dark">
             View Details
           </Link>
-          <button className="btn  text-dark ms-2">Bookmark</button>
+          <button onClick={handleBookmark} className="btn  text-dark ms-2">Bookmark</button>
         </div>
       </div>
     </div>
   );
 }
+
 
 export default CocktailCard;

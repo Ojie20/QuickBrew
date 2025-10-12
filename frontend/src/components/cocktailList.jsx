@@ -3,7 +3,7 @@ import CocktailCard from "./cocktailCard";
 
 function CocktailList({ cocktails }) {
   return (
-    <div className="row">
+    <div className="row mx-auto">
       {cocktails.length > 0 ? (
         cocktails.map((c) => <CocktailCard key={c._id} cocktail={c} />)
       ) : (

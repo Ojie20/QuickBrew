@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 function SearchBar({ onSearch }) {
   const [ingredient, setIngredient] = useState("");
@@ -16,6 +17,7 @@ function SearchBar({ onSearch }) {
             QuickBrew
         </a>
 
+        
         <form className="d-flex ms-auto" onSubmit={handleSubmit} >
         <input
             type="text"
@@ -26,6 +28,7 @@ function SearchBar({ onSearch }) {
         />
         <button className="btn text-dark" type="submit">Search</button>
         </form>
+        <Link to="/bookmarks" className="btn btn-outline-dark ms-3">Bookmarks</Link>
     </nav>
   );
 }

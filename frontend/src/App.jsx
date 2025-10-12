@@ -8,6 +8,7 @@ import LandingCard from "./components/landingCard";
 import SearchBar from "./components/searchbar";
 import CocktailList from "./components/cocktailList";
 import CocktailDetails from "./pages/cocktailDetails";
+import Bookmarks from "./pages/bookmarks";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,13 +32,18 @@ function App() {
 
   useEffect(() => {
     fetchCocktails();
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
   }, []);
 
   if (searched){
     return (
       <Router>
         <Routes>
-          <Route path="/login" element={<Login onLogin={()=>setIsLoggedIn(true)}/>} />
+          <Route path="/login" element={
+            <Login onLogin={()=>setIsLoggedIn(true)}/>} />
           <Route
             path="/"
             element={
@@ -51,6 +57,7 @@ function App() {
               )
             }
           />
+
           <Route path="/cocktail/:id" element={<CocktailDetails />} />
         </Routes>
       </Router>
@@ -60,7 +67,8 @@ function App() {
     return (
       <Router>
         <Routes>
-          <Route path="/login" element={<Login onLogin={()=>setIsLoggedIn(true)}/>} />
+          <Route path="/login" element={
+            isLoggedIn ? <Navigate to="/"/> : <Login onLogin={()=>setIsLoggedIn(true)}/>} />
           <Route
             path="/"
             element={
@@ -75,6 +83,7 @@ function App() {
               )
             }
           />
+          <Route path="/bookmarks" element={isLoggedIn ? <Bookmarks /> : <Navigate to="/login" />} />
           <Route path="/cocktail/:id" element={<CocktailDetails />} />
         </Routes>
       </Router>

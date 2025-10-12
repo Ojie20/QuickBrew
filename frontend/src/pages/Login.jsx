@@ -24,31 +24,38 @@ function Login({onLogin}) {
     };
 
     return (
-        <div className="login-container">
-            <h2>Login</h2>
+        <div className="min-vh-100 d-flex justify-content-center align-items-center">
+            <div className="container login-container mx-auto w-50 p-4 border rounded text-center">
+            <p className="navbar-brand" >
+            <img src="public/QuickBrewLogo.svg" alt="Logo" width="90" height="90" className="d-inline-block align-top" />
+            </p>
+            <h2 className='mb-3'>Login</h2>
             <form onSubmit={handleSubmit} className="login-form">
-                <div className="form-group">
-                    <label>Username:</label>
+                <div className="mb-3">
+                    <label htmlFor="username" className='form-label'>Username</label>
                     <input
+                    className='form-control'
                         type="username"
                         id="username"
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e) => setUsername(e.target.value.trim())}
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password:</label>
+                <div className=" mb-3">
+                    <label htmlFor="password" className='form-label'>Password</label>
                     <input
+                    className='form-control'
                         type="password"
                         id="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value.trim())}
                         required
                     />
                 </div>
-                <button type="submit" className="login-button">Login</button>
+                <button type="submit" className="btn">Login</button>
             </form>
+        </div>
         </div>
     );
 };
